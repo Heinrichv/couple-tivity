@@ -1,15 +1,14 @@
 import { NgModule } from "@angular/core";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
-
-import { SettingsComponent } from "./settings.component";
+import { ManageComponent } from "./manage.component";
 
 const routes: Routes = [
-    { path: "", component: SettingsComponent }
+    { path: "", component: ManageComponent }
 ];
 
 @NgModule({
     imports: [NativeScriptRouterModule.forChild(routes)],
     exports: [NativeScriptRouterModule]
 })
-export class SettingsRoutingModule { }
+export class ManageRoutingModule { }
