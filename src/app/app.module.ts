@@ -1,5 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { TNSFrescoModule } from "nativescript-fresco/angular";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 
 import { HttpClientModule } from "@angular/common/http";
@@ -14,6 +15,7 @@ import { AppComponent } from "./app.component";
     imports: [
         AppRoutingModule,
         NativeScriptModule,
+        TNSFrescoModule,
         NativeScriptUISideDrawerModule,
         HttpClientModule
     ],
