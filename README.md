@@ -1,5 +1,5 @@
-<img src="/App_Resources/Android/src/main/res/drawable-xxxhdpi/logo.png" height="150" /> 
 # Couple-Tivity: NativeScript with Angular
+<img src="/App_Resources/Android/src/main/res/drawable-xxxhdpi/logo.png" height="150" /> 
 
 ## Key Features
 
