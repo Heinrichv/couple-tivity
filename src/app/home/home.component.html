@@ -1,20 +1,25 @@
 <ActionBar class="action-bar">
-    <!-- 
-    Use the NavigationButton as a side-drawer button in Android
-    because ActionItems are shown on the right side of the ActionBar
-    -->
     <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
-    <!-- 
-    Use the ActionItem for IOS with position set to left. Using the
-    NavigationButton as a side-drawer button in iOS is not possible,
-    because its function is to always navigate back in the application.
-    -->
     <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()" ios.position="left">
     </ActionItem>
     <Label class="action-bar-title" text="Couple-Tivity"></Label>
 </ActionBar>
 
-<GridLayout class="page page-content">
-    <Label class="page-icon fa" text="&#xf015;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
-</GridLayout>
+<ScrollView class="text-center">
+    <GridLayout *ngIf="show()" class="m-15" rows="auto auto auto auto auto auto auto">
+        <label row="0" class="m-t-10 h3 text-primary" text="Time to choose an activity !"></label>
+        <StackLayout row="1" class="hr-light m-10"></StackLayout>
+        <RadDataForm row="2" class="m-20" [source]="activityCriteria"></RadDataForm>
+
+        <Button *ngIf="!loading" row="3" (tap)="draw()" text="Choose Activity" class="btn btn-primary" style="background: linear-gradient(45deg, rgb(69, 86, 238), rgb(108, 123, 255), rgb(49, 68, 241));width:200;height:200;border-radius:100;"></Button>
+        <ActivityIndicator *ngIf="loading" row="4" class="activity-indicator" busy="true"></ActivityIndicator>
+    </GridLayout>
+
+    <ListView (itemTap)="activityTap($event)" *ngIf="!show()" [items]="activities" class="list-group">
+        <ng-template let-activity="item" let-i="index" let-odd="odd" let-even="even">
+            <StackLayout orientation="horizontal" class="list-group-item">
+                <Label [text]="activity.title"></Label>
+            </StackLayout>
+        </ng-template>
+    </ListView>
+</ScrollView>

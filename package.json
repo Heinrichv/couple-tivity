@@ -13,6 +13,8 @@
     "repository": "<fill-your-repository-here>",
     "scripts": {
         "lint": "tslint \"src/**/*.ts\"",
+        "start": "tns preview",
+        "build": "tns prepare android && tns build android",
         "deploy": "tns prepare android && tns deploy android"
     },
     "dependencies": {
@@ -27,14 +29,14 @@
         "@angular/router": "~7.1.0",
         "nativescript-accelerometer": "^2.0.1",
         "nativescript-angular": "^7.1.1",
-        "nativescript-fresco": "^5.2.0",
+        "nativescript-fresco": "^5.1.0",
         "nativescript-geolocation": "^4.3.1",
         "nativescript-intl": "^3.0.0",
         "nativescript-theme-core": "^1.0.4",
-        "nativescript-ui-autocomplete": "^3.11.0",
-        "nativescript-ui-dataform": "^3.10.0",
-        "nativescript-ui-listview": "^5.1.0",
-        "nativescript-ui-sidedrawer": "^5.1.0",
+        "nativescript-ui-autocomplete": "^3.10.3",
+        "nativescript-ui-dataform": "^3.9.1",
+        "nativescript-ui-listview": "^5.0.1",
+        "nativescript-ui-sidedrawer": "^5.0.1",
         "reflect-metadata": "~0.1.10",
         "rxjs": "~6.3.0",
         "tns-core-modules": "~5.1.0",

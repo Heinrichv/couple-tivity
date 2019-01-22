@@ -12,7 +12,7 @@ import { ActivityService } from "~/services/api/adventurejar/services";
     templateUrl: "./manage.component.html"
 })
 export class ManageComponent implements OnInit {
-
+    activities: Array<ActivityModel> = [];
     activity: ActivityModel = this.activity = {
         activityName: "",
         activityDescription: "",
@@ -24,16 +24,22 @@ export class ManageComponent implements OnInit {
     constructor(
         readonly activityService: ActivityService,
         readonly router: Router,
-        readonly routerExtensions: RouterExtensions) {
-    }
+        readonly routerExtensions: RouterExtensions
+    ) { }
 
     ngOnInit(): void {
-        // Init your component properties here.
+        this.getAllActivities();
     }
 
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
+    }
+
+    getAllActivities() {
+        this.activityService.GetAllActivities().subscribe((x) => {
+            this.activities = x;
+        });
     }
 
     submit(): void {
@@ -48,6 +54,12 @@ export class ManageComponent implements OnInit {
                 transition: {
                     name: "fade"
                 }
+            });
+        }, (err) => {
+            alert({
+                title: "Oops !",
+                message: "Something unexpected happened",
+                okButtonText: "Okay"
             });
         });
 

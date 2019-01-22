@@ -13,16 +13,10 @@
     </ActionItem>
     <Label class="action-bar-title" text="Couple-Tivity"></Label>
 </ActionBar>
+<StackLayout>
+    <Label class="text-center text-primary m-y-10 h3" text="Add a new activity" textWrap="true"></Label>
+    <StackLayout class="hr-light m-10"></StackLayout>
+    <RadDataForm [source]="activity"></RadDataForm>
 
-<GridLayout>
-    <ScrollView class="page-content">
-        <StackLayout class="manage-panel">
-            <Label class="text-center text-primary m-y-10 font-weight-bold" text="Add a new activity" textWrap="true"></Label>
-            <StackLayout class="hr-light m-10"></StackLayout>
-            <RadDataForm [source]="activity"></RadDataForm>
-
-            <Button text="Submit Activity" class="m-t-4 btn btn-primary btn-rounded-lg" (tap)="submit()"></Button>
-
-        </StackLayout>
-    </ScrollView>
-</GridLayout>
+    <Button text="Submit Activity" class="m-t-4 btn btn-primary btn-rounded-lg" (tap)="submit()"></Button>
+</StackLayout>

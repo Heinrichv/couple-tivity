@@ -18,7 +18,7 @@ class ActivityService extends __BaseService {
   ) {
     super(config, http);
   }
-  GetAllActivitiesResponse(): __Observable<__StrictHttpResponse<null>> {
+  GetAllActivitiesResponse(): __Observable<__StrictHttpResponse<Array<ActivityModel>>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -35,12 +35,14 @@ class ActivityService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<null>;
+        return _r as __StrictHttpResponse<Array<ActivityModel>>;
       })
     );
-  }  GetAllActivities(): __Observable<null> {
+  }
+
+  GetAllActivities(): __Observable<Array<ActivityModel>> {
     return this.GetAllActivitiesResponse().pipe(
-      __map(_r => _r.body as null)
+      __map(_r => _r.body as Array<ActivityModel>)
     );
   }
 
@@ -137,12 +139,12 @@ class ActivityService extends __BaseService {
     let __formData = new FormData();
     __body = __formData;
 
-   if(params.Name !== null && typeof params.Name !== "undefined") { __formData.append('Name', params.Name as string | Blob);}
-   if(params.Length !== null && typeof params.Length !== "undefined") { __formData.append('Length', JSON.stringify(params.Length));}
-   if(params.Headers !== null && typeof params.Headers !== "undefined") { __formData.append('Headers', JSON.stringify(params.Headers));}
-   if(params.FileName !== null && typeof params.FileName !== "undefined") { __formData.append('FileName', params.FileName as string | Blob);}
-   if(params.ContentType !== null && typeof params.ContentType !== "undefined") { __formData.append('ContentType', params.ContentType as string | Blob);}
-   if(params.ContentDisposition !== null && typeof params.ContentDisposition !== "undefined") { __formData.append('ContentDisposition', params.ContentDisposition as string | Blob);}
+    if (params.Name !== null && typeof params.Name !== "undefined") { __formData.append('Name', params.Name as string | Blob); }
+    if (params.Length !== null && typeof params.Length !== "undefined") { __formData.append('Length', JSON.stringify(params.Length)); }
+    if (params.Headers !== null && typeof params.Headers !== "undefined") { __formData.append('Headers', JSON.stringify(params.Headers)); }
+    if (params.FileName !== null && typeof params.FileName !== "undefined") { __formData.append('FileName', params.FileName as string | Blob); }
+    if (params.ContentType !== null && typeof params.ContentType !== "undefined") { __formData.append('ContentType', params.ContentType as string | Blob); }
+    if (params.ContentDisposition !== null && typeof params.ContentDisposition !== "undefined") { __formData.append('ContentDisposition', params.ContentDisposition as string | Blob); }
     let req = new HttpRequest<any>(
       'POST',
       this.rootUrl + `/api/activity/image/${params.id}`,
@@ -182,7 +184,7 @@ class ActivityService extends __BaseService {
       __map(_r => _r.body as null)
     );
   }
-  GetRandomActivityResponse(): __Observable<__StrictHttpResponse<null>> {
+  GetRandomActivityResponse(): __Observable<__StrictHttpResponse<ActivityModel>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
@@ -199,12 +201,14 @@ class ActivityService extends __BaseService {
     return this.http.request<any>(req).pipe(
       __filter(_r => _r instanceof HttpResponse),
       __map((_r) => {
-        return _r as __StrictHttpResponse<null>;
+        return _r as __StrictHttpResponse<ActivityModel>;
       })
     );
-  }  GetRandomActivity(): __Observable<null> {
+  }
+
+  GetRandomActivity(): __Observable<ActivityModel> {
     return this.GetRandomActivityResponse().pipe(
-      __map(_r => _r.body as null)
+      __map(_r => _r.body as ActivityModel)
     );
   }
 }
